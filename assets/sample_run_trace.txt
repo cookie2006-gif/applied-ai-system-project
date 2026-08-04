@@ -1,0 +1,76 @@
+[INFO] [run-9c7554f2] agent.start: query=I want chill lofi music for studying with acoustic textures, k=5
+[INFO] [run-9c7554f2] plan.parse: matched={'genre': 'lofi', 'mood': 'studying', 'extra_mood_tags': 'studying', 'energy': 'chill', 'likes_acoustic': 'acoustic'}, warnings=[]
+[INFO] [run-9c7554f2] plan.strategy: mode=balanced, diversity=False, has_genre=True, has_mood=True, has_energy=True
+[INFO] [run-9c7554f2] iteration.start: n=1, mode=balanced, diversity=False
+[INFO] [run-9c7554f2] act.recommend: mode=balanced, diversity=False, returned=5, top_song=Focus Flow, top_score=6.28
+[INFO] [run-9c7554f2] critique.report: aggregate=0.582, label=MEDIUM, finding_codes=['ARTIST_REPETITION']
+[INFO] [run-9c7554f2] refine.decide: action=enable_diversity, driver=ARTIST_REPETITION
+[INFO] [run-9c7554f2] iteration.start: n=2, mode=balanced, diversity=True
+[INFO] [run-9c7554f2] act.recommend: mode=balanced, diversity=True, returned=5, top_song=Focus Flow, top_score=6.28
+[INFO] [run-9c7554f2] critique.report: aggregate=0.54, label=MEDIUM, finding_codes=[]
+[INFO] [run-9c7554f2] iteration.stop: reason=no actionable findings
+[INFO] [run-9c7554f2] agent.done: iterations=2, mode=balanced, diversity=True, aggregate=0.54, label=MEDIUM
+[INFO] [run-ac98689f] agent.start: query=high energy pop for my workout, upbeat and electric, k=5
+[INFO] [run-ac98689f] plan.parse: matched={'genre': 'pop', 'mood': 'upbeat', 'extra_mood_tags': 'workout', 'energy': 'high energy', 'likes_acoustic': 'electric'}, warnings=[]
+[INFO] [run-ac98689f] plan.strategy: mode=balanced, diversity=False, has_genre=True, has_mood=True, has_energy=True
+[INFO] [run-ac98689f] iteration.start: n=1, mode=balanced, diversity=False
+[INFO] [run-ac98689f] act.recommend: mode=balanced, diversity=False, returned=5, top_song=Gym Hero, top_score=5.89
+[INFO] [run-ac98689f] critique.report: aggregate=0.508, label=MEDIUM, finding_codes=['ARTIST_REPETITION']
+[INFO] [run-ac98689f] refine.decide: action=enable_diversity, driver=ARTIST_REPETITION
+[INFO] [run-ac98689f] iteration.start: n=2, mode=balanced, diversity=True
+[INFO] [run-ac98689f] act.recommend: mode=balanced, diversity=True, returned=5, top_song=Gym Hero, top_score=5.89
+[INFO] [run-ac98689f] critique.report: aggregate=0.506, label=MEDIUM, finding_codes=[]
+[INFO] [run-ac98689f] iteration.stop: reason=no actionable findings
+[INFO] [run-ac98689f] agent.done: iterations=2, mode=balanced, diversity=True, aggregate=0.506, label=MEDIUM
+[INFO] [run-90c66864] agent.start: query=melancholy classical piano, low energy for reflection, k=5
+[INFO] [run-90c66864] plan.parse: matched={'genre': 'classical', 'mood': 'melancholy', 'energy': 'low energy', 'likes_acoustic': 'piano'}, warnings=[]
+[INFO] [run-90c66864] plan.strategy: mode=balanced, diversity=False, has_genre=True, has_mood=True, has_energy=True
+[INFO] [run-90c66864] iteration.start: n=1, mode=balanced, diversity=False
+[INFO] [run-90c66864] act.recommend: mode=balanced, diversity=False, returned=5, top_song=Winter Prelude, top_score=5.91
+[INFO] [run-90c66864] critique.report: aggregate=0.454, label=LOW, finding_codes=['ARTIST_REPETITION']
+[INFO] [run-90c66864] refine.decide: action=enable_diversity, driver=ARTIST_REPETITION
+[INFO] [run-90c66864] iteration.start: n=2, mode=balanced, diversity=True
+[INFO] [run-90c66864] act.recommend: mode=balanced, diversity=True, returned=5, top_song=Winter Prelude, top_score=5.91
+[INFO] [run-90c66864] critique.report: aggregate=0.451, label=LOW, finding_codes=[]
+[INFO] [run-90c66864] iteration.stop: reason=no actionable findings
+[INFO] [run-90c66864] agent.done: iterations=2, mode=balanced, diversity=True, aggregate=0.451, label=LOW
+[INFO] [run-436c9516] agent.start: query=I want some k-pop hits with high energy, k=5
+[INFO] [run-436c9516] plan.parse: matched={'energy': 'high energy'}, warnings=['no genre matched the KB — the recommender will score on mood + energy only', "no mood matched the KB — defaulting to 'chill'"]
+[INFO] [run-436c9516] plan.strategy: mode=energy-focused, diversity=False, has_genre=False, has_mood=False, has_energy=True
+[INFO] [run-436c9516] iteration.start: n=1, mode=energy-focused, diversity=False
+[INFO] [run-436c9516] act.recommend: mode=energy-focused, diversity=False, returned=5, top_song=Storm Runner, top_score=5.85
+[INFO] [run-436c9516] critique.report: aggregate=0.656, label=MEDIUM, finding_codes=['TOP_MOOD_MISMATCH', 'FLAT_SCORE_CURVE', 'PARSE_WARNING', 'PARSE_WARNING']
+[INFO] [run-436c9516] refine.decide: action=switch_mode, to=mood-first, driver=TOP_MOOD_MISMATCH
+[INFO] [run-436c9516] iteration.start: n=2, mode=mood-first, diversity=False
+[INFO] [run-436c9516] act.recommend: mode=mood-first, diversity=False, returned=5, top_song=Midnight Coding, top_score=4.33
+[INFO] [run-436c9516] critique.report: aggregate=0.411, label=LOW, finding_codes=['PARSE_WARNING', 'PARSE_WARNING']
+[INFO] [run-436c9516] iteration.stop: reason=no actionable findings
+[INFO] [run-436c9516] agent.done: iterations=2, mode=mood-first, diversity=False, aggregate=0.411, label=LOW
+[INFO] [run-9dc23500] agent.start: query=chill lofi, k=5
+[INFO] [run-9dc23500] plan.parse: matched={'genre': 'lofi', 'mood': 'chill', 'energy': 'chill'}, warnings=[]
+[INFO] [run-9dc23500] plan.strategy: mode=balanced, diversity=False, has_genre=True, has_mood=True, has_energy=True
+[INFO] [run-9dc23500] iteration.start: n=1, mode=balanced, diversity=False
+[INFO] [run-9dc23500] act.recommend: mode=balanced, diversity=False, returned=5, top_song=Midnight Coding, top_score=5.25
+[INFO] [run-9dc23500] critique.report: aggregate=0.512, label=MEDIUM, finding_codes=['ARTIST_REPETITION']
+[INFO] [run-9dc23500] refine.decide: action=enable_diversity, driver=ARTIST_REPETITION
+[INFO] [run-9dc23500] iteration.start: n=2, mode=balanced, diversity=True
+[INFO] [run-9dc23500] act.recommend: mode=balanced, diversity=True, returned=5, top_song=Midnight Coding, top_score=5.25
+[INFO] [run-9dc23500] critique.report: aggregate=0.466, label=LOW, finding_codes=[]
+[INFO] [run-9dc23500] iteration.stop: reason=no actionable findings
+[INFO] [run-9dc23500] agent.done: iterations=2, mode=balanced, diversity=True, aggregate=0.466, label=LOW
+[INFO] [run-1b024d29] agent.start: query=, k=5
+[INFO] [run-1b024d29] plan.parse: matched={}, warnings=['empty query — falling back to a neutral profile']
+[INFO] [run-1b024d29] plan.strategy: mode=balanced, diversity=False, has_genre=False, has_mood=False, has_energy=False
+[INFO] [run-1b024d29] iteration.start: n=1, mode=balanced, diversity=False
+[INFO] [run-1b024d29] act.recommend: mode=balanced, diversity=False, returned=5, top_song=Sunrise City, top_score=4.18
+[INFO] [run-1b024d29] critique.report: aggregate=0.407, label=LOW, finding_codes=['TOP_MOOD_MISMATCH', 'ARTIST_REPETITION', 'PARSE_WARNING']
+[INFO] [run-1b024d29] refine.decide: action=switch_mode, to=mood-first, driver=TOP_MOOD_MISMATCH
+[INFO] [run-1b024d29] iteration.start: n=2, mode=mood-first, diversity=False
+[INFO] [run-1b024d29] act.recommend: mode=mood-first, diversity=False, returned=5, top_song=Midnight Coding, top_score=5.13
+[INFO] [run-1b024d29] critique.report: aggregate=0.491, label=LOW, finding_codes=['ARTIST_REPETITION', 'PARSE_WARNING']
+[INFO] [run-1b024d29] refine.decide: action=enable_diversity, driver=ARTIST_REPETITION
+[INFO] [run-1b024d29] iteration.start: n=3, mode=mood-first, diversity=True
+[INFO] [run-1b024d29] act.recommend: mode=mood-first, diversity=True, returned=5, top_song=Midnight Coding, top_score=5.13
+[INFO] [run-1b024d29] critique.report: aggregate=0.483, label=LOW, finding_codes=['PARSE_WARNING']
+[INFO] [run-1b024d29] iteration.stop: reason=no actionable findings
+[INFO] [run-1b024d29] agent.done: iterations=3, mode=mood-first, diversity=True, aggregate=0.483, label=LOW

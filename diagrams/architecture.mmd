@@ -1,0 +1,65 @@
+%% VibeMatch 2.0 — Applied AI System Architecture
+%% Renders in the Mermaid Live Editor (https://mermaid.live) or any
+%% Markdown viewer that supports Mermaid (e.g. GitHub, VS Code).
+
+flowchart TB
+    User([User])
+    NL["Natural-language query<br/>e.g. 'chill lofi for studying'"]
+
+    subgraph Planner["1. PLANNER (src/agent.py :: _plan)"]
+        direction TB
+        Parser["query_parser.parse_query()"]
+        KB[("Music-domain KB<br/>src/kb/music_terms.md<br/>(retrieved chunks)")]
+        Profile["Structured UserProfile<br/>{genre, mood, energy,<br/>likes_acoustic, tags,<br/>popularity_pref}"]
+        Strategy["Initial strategy<br/>(mode, diversity)"]
+        Parser -.reads.-> KB
+        Parser --> Profile
+        Parser --> Strategy
+    end
+
+    subgraph Act["2. ACT (src/agent.py :: _recommend)"]
+        Catalog[("data/songs.csv<br/>18 songs, 15 features")]
+        Recommender["recommender.recommend_songs()<br/>(additive scoring engine +<br/>SCORING_MODES strategy pattern)"]
+        TopK["Top-K + per-song reasons"]
+        Recommender -.reads.-> Catalog
+        Recommender --> TopK
+    end
+
+    subgraph Critic["3. CRITIQUE (src/critic.py :: critique)"]
+        Confidence["Per-song confidence<br/>(score / max_possible)"]
+        Findings["Structured findings:<br/>EMPTY_RESULTS<br/>TOP_MOOD_MISMATCH<br/>LOW_AGGREGATE_CONFIDENCE<br/>ARTIST_REPETITION<br/>FLAT_SCORE_CURVE<br/>PARSE_WARNING"]
+        Confidence --> Findings
+    end
+
+    subgraph Refine["4. REFINE (src/agent.py :: _refine)"]
+        Decision{"Actionable<br/>finding?"}
+        Adjust["Switch mode (mood-first /<br/>energy-focused) OR<br/>enable diversity re-ranker"]
+        Cap["MAX_ITERATIONS = 3<br/>(bounded loop guard)"]
+        Decision -- yes --> Adjust
+        Adjust -.-> Cap
+    end
+
+    subgraph Output["OUTPUT"]
+        Result["AgentResult<br/>recommendations,<br/>confidence label,<br/>critic findings,<br/>mode + diversity used,<br/>iteration count,<br/>structured log"]
+        Log[("logs/agent_run.jsonl<br/>(one JSON record per step)")]
+    end
+
+    subgraph Reliability["RELIABILITY HARNESS (src/evaluation.py)"]
+        direction TB
+        Cases["6 curated test cases:<br/>clear intent,<br/>conflicting prefs,<br/>unknown genre,<br/>empty query,<br/>adversarial"]
+        Criteria["Typed criteria:<br/>top_genre_in / confidence_at_least /<br/>unique_artists / no_errors /<br/>warns_on_unknown / iterations_bounded"]
+        Report["evaluation_report.md<br/>evaluation_report.json<br/>(pass/fail table)"]
+        Cases --> Criteria --> Report
+    end
+
+    User --> NL --> Parser
+    Profile --> Recommender
+    Strategy --> Recommender
+    TopK --> Confidence
+    Findings --> Decision
+    Adjust -- new mode/diversity --> Recommender
+    Decision -- no --> Result
+    Result --> Log
+    Result --> User
+
+    Reliability -.re-invokes.-> Planner

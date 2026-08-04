@@ -13,3 +13,6 @@ venv/
 
 # Pytest cache
 .pytest_cache/
+
+# Runtime logs (kept out of git — regenerated on every run)
+logs/

@@ -1,0 +1,161 @@
+{
+  "summary": {
+    "cases_passed": 6,
+    "cases_total": 6,
+    "criteria_passed": 17,
+    "criteria_total": 17
+  },
+  "cases": [
+    {
+      "name": "clear-lofi-study-request",
+      "query": "I want chill lofi music for studying with acoustic textures",
+      "iterations": 2,
+      "mode_used": "balanced",
+      "diversity_used": true,
+      "aggregate_confidence": 0.54,
+      "confidence_label": "MEDIUM",
+      "criteria": [
+        {
+          "name": "top_genre_in_ambient/jazz/lofi",
+          "passed": true,
+          "detail": "top-genre='lofi', allowed=['ambient', 'jazz', 'lofi']"
+        },
+        {
+          "name": "confidence_at_least_MEDIUM",
+          "passed": true,
+          "detail": "confidence=MEDIUM vs required\u2265MEDIUM"
+        },
+        {
+          "name": "no_errors_or_crashes",
+          "passed": true,
+          "detail": "error-events=0"
+        },
+        {
+          "name": "iterations_bounded_3",
+          "passed": true,
+          "detail": "iterations=2, max=3"
+        }
+      ]
+    },
+    {
+      "name": "high-energy-workout-pop",
+      "query": "high energy pop for my workout, upbeat and electric",
+      "iterations": 2,
+      "mode_used": "balanced",
+      "diversity_used": true,
+      "aggregate_confidence": 0.506,
+      "confidence_label": "MEDIUM",
+      "criteria": [
+        {
+          "name": "top_genre_in_edm/indie pop/pop/synthwave",
+          "passed": true,
+          "detail": "top-genre='pop', allowed=['edm', 'indie pop', 'pop', 'synthwave']"
+        },
+        {
+          "name": "confidence_at_least_MEDIUM",
+          "passed": true,
+          "detail": "confidence=MEDIUM vs required\u2265MEDIUM"
+        },
+        {
+          "name": "top_mood_matches_or_neighbors_energetic",
+          "passed": true,
+          "detail": "top-mood='intense', allowed=['aggressive', 'energetic', 'euphoric', 'intense']"
+        },
+        {
+          "name": "no_errors_or_crashes",
+          "passed": true,
+          "detail": "error-events=0"
+        }
+      ]
+    },
+    {
+      "name": "intense-rock-request",
+      "query": "intense rock, driving and powerful",
+      "iterations": 1,
+      "mode_used": "balanced",
+      "diversity_used": false,
+      "aggregate_confidence": 0.478,
+      "confidence_label": "LOW",
+      "criteria": [
+        {
+          "name": "top_genre_in_metal/rock",
+          "passed": true,
+          "detail": "top-genre='rock', allowed=['metal', 'rock']"
+        },
+        {
+          "name": "no_errors_or_crashes",
+          "passed": true,
+          "detail": "error-events=0"
+        }
+      ]
+    },
+    {
+      "name": "melancholy-classical-piano",
+      "query": "melancholy classical piano, low energy",
+      "iterations": 2,
+      "mode_used": "balanced",
+      "diversity_used": true,
+      "aggregate_confidence": 0.451,
+      "confidence_label": "LOW",
+      "criteria": [
+        {
+          "name": "top_genre_in_ambient/classical/lofi",
+          "passed": true,
+          "detail": "top-genre='classical', allowed=['ambient', 'classical', 'lofi']"
+        },
+        {
+          "name": "no_errors_or_crashes",
+          "passed": true,
+          "detail": "error-events=0"
+        }
+      ]
+    },
+    {
+      "name": "unknown-genre-graceful-fallback",
+      "query": "I want some k-pop hits with high energy",
+      "iterations": 2,
+      "mode_used": "mood-first",
+      "diversity_used": false,
+      "aggregate_confidence": 0.411,
+      "confidence_label": "LOW",
+      "criteria": [
+        {
+          "name": "warns_on_unknown_input",
+          "passed": true,
+          "detail": "parse.warnings=['no genre matched the KB \u2014 the recommender will score on mood + energy only', \"no mood matched the KB \u2014 defaulting to 'chill'\"]"
+        },
+        {
+          "name": "no_errors_or_crashes",
+          "passed": true,
+          "detail": "error-events=0"
+        },
+        {
+          "name": "iterations_bounded_3",
+          "passed": true,
+          "detail": "iterations=2, max=3"
+        }
+      ]
+    },
+    {
+      "name": "empty-query-does-not-crash",
+      "query": "",
+      "iterations": 3,
+      "mode_used": "mood-first",
+      "diversity_used": true,
+      "aggregate_confidence": 0.483,
+      "confidence_label": "LOW",
+      "criteria": [
+        {
+          "name": "no_errors_or_crashes",
+          "passed": true,
+          "detail": "error-events=0"
+        },
+        {
+          "name": "iterations_bounded_3",
+          "passed": true,
+          "detail": "iterations=3, max=3"
+        }
+      ]
+    }
+  ]
+}
